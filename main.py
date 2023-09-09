@@ -82,3 +82,47 @@ def ascii_to_formula(filename):
 
 # print(ascii_to_formula('charizard.txt'))
 # print(formula_to_ascii('charizardFormula.txt'))
+def main():
+    while True:
+        # Display menu
+        print("\nPlease Choose an Option:")
+        print("1. Formula to ASCII")
+        print("2. ASCII to Formula")
+        print("3. Option 3")
+        print("4. Exit")
+
+        # Get user choice
+        choice = input("Enter your choice (1/2/3/4): ")
+
+        # Process user choice
+        if choice == "1":
+            option1()
+        elif choice == "2":
+            option2()
+        elif choice == "3":
+            option3()
+        elif choice == "4":
+            print("Exiting program...")
+            break
+        else:
+            print("Invalid choice. Please enter a number between 1 and 4.")
+
+
+def option1():
+    print("You selected Option 1!\n")
+    file = input("Please enter the name of the file, including extension (i.e. charizard.txt): ")
+    formula_to_ascii(file)
+
+
+def option2():
+    print("You selected Option 2!")
+    file = input("Please enter the name of the file, including extension (i.e. formula.txt): ")
+    ascii_to_formula(file)
+
+
+def option3():
+    print("You selected Option 3!")
+
+
+if __name__ == "__main__":
+    main()
