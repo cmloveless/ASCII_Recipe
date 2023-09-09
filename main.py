@@ -1,38 +1,29 @@
-import sys
-import math
 
-# Set the file path for the recipe #
-path = ''
+key = {'sp': ' ', 'bS': '\\', 'sQ': "\'"}
 
-f = open(path, 'r')
-t = f.read()
 
-f.close()
+def formula_to_ascii(formula):
 
-line = ''
+    line = ''
+    chunk = formula.split(" ")
 
-key = {'sp':' ', 'bS':'\\', 'sQ':"\'"}
-
-list = t.split(" ")
-
-for x in list:
-    numeral = ''
-    chars = ''
-    if x == 'nl':
-        line += '\n'
-    elif x.isdigit():
-        numeral = x[:-1]
-        chars = x[-1]
-        line += (int(numeral) * chars)
-    else:
-        for c in x:
-            if c.isdecimal():
-                numeral += c
-            else:
-                chars += c
-        if chars in key:
-            line += (key[chars] * int(numeral))
+    for x in chunk:
+        numeral = ''
+        chars = ''
+        if x == 'nl':
+            line += '\n'
+        elif x.isdigit():
+            numeral = x[:-1]
+            chars = x[-1]
+            line += (int(numeral) * chars)
         else:
-            line += (chars * int(numeral))
-    
-print(line)
+            for c in x:
+                if c.isdecimal():
+                    numeral += c
+                else:
+                    chars += c
+            if chars in key:
+                line += (key[chars] * int(numeral))
+            else:
+                line += (chars * int(numeral))
+    return line
