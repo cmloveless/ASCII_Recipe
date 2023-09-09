@@ -1,12 +1,9 @@
-
-key = {'sp': ' ', 'bS': '\\', 'sQ': "\'"}
-
-
 def formula_to_ascii(filename):
+    key = {'sp': ' ', 'bS': '\\', 'sQ': "\'"}
 
     with open(filename, 'r') as file:
-        chunk = file.read()
-
+        f = file.read()
+    chunk = f.split(' ')
     line = ''
 
     for x in chunk:
@@ -44,13 +41,13 @@ def ascii_to_formula(filename):
     }
 
     # Helper function to add current sequence to the result list
-    def add_to_result(count, char):
-        if char.isdigit():
-            result.append(str(count) + char)
-        elif char in abbreviations:
-            result.append(str(count) + abbreviations[char])
+    def add_to_result(mult, character):
+        if character.isdigit():
+            result.append(str(mult) + character)
+        elif character in abbreviations:
+            result.append(str(mult) + abbreviations[character])
         else:
-            result.append(str(count) + char)
+            result.append(str(mult) + character)
 
     # Initialization
     result = []
@@ -82,3 +79,6 @@ def ascii_to_formula(filename):
 
     return ' '.join(result)
 
+
+# print(ascii_to_formula('charizard.txt'))
+# print(formula_to_ascii('charizardFormula.txt'))
